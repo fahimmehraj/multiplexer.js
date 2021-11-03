@@ -1,0 +1,44 @@
+{
+  "name": "multiplexer.js",
+  "version": "1.0.0",
+  "description": "A module for interacting with the TCA9548A intuitively using the i2c communication bus",
+  "main": "lib/multiplexer.js",
+  "types": "typings/index.d.ts",
+  "files": [
+    "lib",
+    "typings"
+  ],
+  "scripts": {
+    "types": "dts-bundle --removeSource --name multiplexer.js --main ./lib --out ../typings/index.d.ts --baseDir ./lib", 
+    "build": "tsc -p .",
+    "prepublishOnly": "npm run build && npm run types"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frykher/multiplexer.js.git"
+  },
+  "keywords": [
+    "TCA9548A",
+    "multiplexer",
+    "i2c",
+    "Raspbery Pi",
+    "Pi",
+    "NodeJS",
+    "oled",
+    "SSD1306"
+  ],
+  "author": "Fahim H.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frykher/multiplexer.js/issues"
+  },
+  "homepage": "https://github.com/frykher/multiplexer.js#readme",
+  "dependencies": {
+    "i2c-bus": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/i2c-bus": "^5.1.0",
+    "dts-bundle": "^0.7.3",
+    "typescript": "^4.4.4"
+  }
+}
