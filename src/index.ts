@@ -7,6 +7,22 @@ class MultiplexerChannel implements I2CBus {
         // command to send to multiplexer via i2c
         this.channelSwitch = Buffer.from([1 << channel])
         this.switch()
+        return new Proxy(this, {
+            get(target, prop) {
+                const isValidIndex = (prop: string | symbol): prop is Extract<keyof typeof target, string | symbol> => 
+                    Reflect.ownKeys(Object.getPrototypeOf(target)).includes(prop);
+                
+                if (isValidIndex(prop)) {
+                    const origMethod = target[prop]
+                    if (typeof origMethod == 'function') {
+                        return function(...args: any[]) {
+                            target.switch();
+                            return origMethod.apply(target, args)
+                        }
+                    }
+                }
+            }
+        })
     }
     close(callback: bus.CompletionCallback): void {
         return this.tca.i2c.close(callback);

@@ -1,8 +1,8 @@
 {
   "name": "multiplexer.js",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A module for interacting with the TCA9548A intuitively using the i2c communication bus",
-  "main": "lib/multiplexer.js",
+  "main": "lib/index.js",
   "types": "typings/index.d.ts",
   "files": [
     "lib",
